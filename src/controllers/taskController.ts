@@ -80,7 +80,8 @@ createTask = async (req: Request, res: Response) => {
    */
   getAllTasks = async (req: Request, res: Response) => {
     try {
-      const userId = req.user!._id.toString();
+          const userId = req.user!._id;
+
       const tasks = await this.taskService.getUserTasks(userId);
       sendSuccess(res, MESSAGES.TASKS_FETCHED, tasks);
     } catch (error: any) {
