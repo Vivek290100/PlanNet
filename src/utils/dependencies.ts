@@ -1,4 +1,3 @@
-// src/utils/dependencies.ts
 import { AuthController } from '../controllers/authController.js';
 import { TaskController } from '../controllers/taskController.js';
 import { AuthService } from '../services/authService.js';
@@ -18,7 +17,6 @@ const taskService = new TaskService(taskRepo);
 const authController = new AuthController(authService);
 const taskController = new TaskController(taskService);
 
-// Export as object
 export const Dependencies = {
   userRepo,
   taskRepo,

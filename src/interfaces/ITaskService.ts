@@ -1,4 +1,3 @@
-// C:\Users\vivek_laxvnt1\Desktop\PlanNet\src\interfaces\ITaskService.ts
 import { Types } from 'mongoose';
 import { ITask } from './ITask';
 

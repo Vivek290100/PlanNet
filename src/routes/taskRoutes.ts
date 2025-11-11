@@ -1,4 +1,3 @@
-// src/routes/taskRouter.ts
 import { Router } from 'express';
 import { protect } from '../middleware/authMiddleware.js';
 import { Dependencies } from '../utils/dependencies.js';

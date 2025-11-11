@@ -1,4 +1,3 @@
-// C:\Users\vivek_laxvnt1\Desktop\PlanNet\src\utils\response.ts
 import { Response } from 'express';
 
 interface ApiResponse<T = any> {

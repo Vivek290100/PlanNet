@@ -1,4 +1,3 @@
-// C:\Users\vivek_laxvnt1\Desktop\PlanNet\src\utils\constants.ts
 export const AuthRoutes = {
   REGISTER: '/register',
   LOGIN: '/login',

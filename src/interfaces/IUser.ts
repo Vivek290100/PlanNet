@@ -1,4 +1,3 @@
-// C:\Users\vivek_laxvnt1\Desktop\PlanNet\src\interfaces\IUser.ts
 import { Document, Types } from 'mongoose';
 
 export interface IUser extends Document {
