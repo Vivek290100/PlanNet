@@ -12,7 +12,7 @@ import { Types } from 'mongoose';
  */
 
 export class TaskController {
-  constructor(private taskService: ITaskService) {}
+  constructor(private taskService: ITaskService) { }
 
   /**
    * @swagger
@@ -46,17 +46,17 @@ export class TaskController {
    *       400:
    *         $ref: '#/components/schemas/ErrorResponse'
    */
-createTask = async (req: Request, res: Response) => {
-  try {
-    const { title, description } = req.body;
-    // throw new Error("Simulated server crash!");
-    const userId = req.user!._id;
-    const task = await this.taskService.createTask(title, description, userId);
-    sendSuccess(res, MESSAGES.TASK_CREATED, task, 201);
-  } catch (error: any) {
-    sendError(res, error.message, 400);
-  }
-};
+  createTask = async (req: Request, res: Response) => {
+    try {
+      const { title, description } = req.body;
+      // throw new Error("Simulated server crash!");
+      const userId = req.user!._id;
+      const task = await this.taskService.createTask(title, description, userId);
+      sendSuccess(res, MESSAGES.TASK_CREATED, task, 201);
+    } catch (error: any) {
+      sendError(res, error.message, 400);
+    }
+  };
 
   /**
    * @swagger
@@ -80,8 +80,7 @@ createTask = async (req: Request, res: Response) => {
    */
   getAllTasks = async (req: Request, res: Response) => {
     try {
-          const userId = req.user!._id;
-
+      const userId = req.user!._id;
       const tasks = await this.taskService.getUserTasks(userId);
       sendSuccess(res, MESSAGES.TASKS_FETCHED, tasks);
     } catch (error: any) {
@@ -116,16 +115,16 @@ createTask = async (req: Request, res: Response) => {
    *       403:
    *         $ref: '#/components/schemas/ErrorResponse'
    */
-getTask = async (req: Request, res: Response) => {
-  try {
-    const taskId = new Types.ObjectId(req.params.id);
-    const userId = req.user!._id;
-    const task = await this.taskService.getTaskById(taskId, userId);
-    sendSuccess(res, MESSAGES.TASK_FETCHED, task);
-  } catch (error: any) {
-    sendError(res, error.message, error.message === MESSAGES.NOT_FOUND ? 404 : 403);
-  }
-};
+  getTask = async (req: Request, res: Response) => {
+    try {
+      const taskId = new Types.ObjectId(req.params.id);
+      const userId = req.user!._id;
+      const task = await this.taskService.getTaskById(taskId, userId);
+      sendSuccess(res, MESSAGES.TASK_FETCHED, task);
+    } catch (error: any) {
+      sendError(res, error.message, error.message === MESSAGES.NOT_FOUND ? 404 : 403);
+    }
+  };
 
   /**
    * @swagger
@@ -166,16 +165,16 @@ getTask = async (req: Request, res: Response) => {
    *       403:
    *         $ref: '#/components/schemas/ErrorResponse'
    */
-updateTask = async (req: Request, res: Response) => {
-  try {
-    const taskId = new Types.ObjectId(req.params.id);
-    const userId = req.user!._id;
-    const task = await this.taskService.updateTask(taskId, req.body, userId);
-    sendSuccess(res, MESSAGES.TASK_UPDATED, task);
-  } catch (error: any) {
-    sendError(res, error.message, error.message === MESSAGES.NOT_FOUND ? 404 : 403);
-  }
-};
+  updateTask = async (req: Request, res: Response) => {
+    try {
+      const taskId = new Types.ObjectId(req.params.id);
+      const userId = req.user!._id;
+      const task = await this.taskService.updateTask(taskId, req.body, userId);
+      sendSuccess(res, MESSAGES.TASK_UPDATED, task);
+    } catch (error: any) {
+      sendError(res, error.message, error.message === MESSAGES.NOT_FOUND ? 404 : 403);
+    }
+  };
 
   /**
    * @swagger
@@ -206,14 +205,14 @@ updateTask = async (req: Request, res: Response) => {
    *       403:
    *         $ref: '#/components/schemas/ErrorResponse'
    */
-deleteTask = async (req: Request, res: Response) => {
-  try {
-    const taskId = new Types.ObjectId(req.params.id);
-    const userId = req.user!._id;
-    const result = await this.taskService.deleteTask(taskId, userId);
-    sendSuccess(res, result.message);
-  } catch (error: any) {
-    sendError(res, error.message, error.message === MESSAGES.NOT_FOUND ? 404 : 403);
-  }
-};
+  deleteTask = async (req: Request, res: Response) => {
+    try {
+      const taskId = new Types.ObjectId(req.params.id);
+      const userId = req.user!._id;
+      const result = await this.taskService.deleteTask(taskId, userId);
+      sendSuccess(res, result.message);
+    } catch (error: any) {
+      sendError(res, error.message, error.message === MESSAGES.NOT_FOUND ? 404 : 403);
+    }
+  };
 }
